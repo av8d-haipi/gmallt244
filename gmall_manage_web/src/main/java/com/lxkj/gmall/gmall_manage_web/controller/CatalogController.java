@@ -18,7 +18,8 @@ public class CatalogController {
 
     @RequestMapping("/getCatalog1")
     @ResponseBody
-    public List<PmsBaseCatalog1> getCatalog1(){
+    public Object getCatalog1(){
+        System.out.println("==========111");
         List<PmsBaseCatalog1> catalog1s = catalogService.getCatalog1();
         return catalog1s;
     }
