@@ -13,6 +13,7 @@
         <artifactId>gmall_parent</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
+
     <dependencies>
         <dependency>
             <groupId>com.lxkj.gmall</groupId>

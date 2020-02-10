@@ -1,6 +1,5 @@
 package com.lxkj.gmall.bean;
 
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
