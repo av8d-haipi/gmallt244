@@ -2,6 +2,8 @@ package com.lxkj.gmall.gmall_manage_service.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
 import com.lxkj.gmall.bean.PmsBaseCatalog1;
+import com.lxkj.gmall.bean.PmsBaseCatalog2;
+import com.lxkj.gmall.bean.PmsBaseCatalog3;
 import com.lxkj.gmall.gmall_manage_service.mapper.PmsBaseCatalog1Mapper;
 import com.lxkj.gmall.gmall_manage_service.mapper.PmsBaseCatalog2Mapper;
 import com.lxkj.gmall.gmall_manage_service.mapper.PmsBaseCatalog3Mapper;
@@ -25,5 +27,19 @@ public class CatalogServiceImpl implements CatalogService {
     @Override
     public List<PmsBaseCatalog1> getCatalog1() {
         return pmsBaseCatalog1Mapper.selectAll();
+    }
+
+    @Override
+    public List<PmsBaseCatalog2> getCatalog2(String catalog1Id) {
+        PmsBaseCatalog2 pmsBaseCatalog2 = new PmsBaseCatalog2();
+        pmsBaseCatalog2.setCatalog1Id(catalog1Id);
+        return pmsBaseCatalog2Mapper.select(pmsBaseCatalog2);
+    }
+
+    @Override
+    public List<PmsBaseCatalog3> getCatalog3(String catalog2Id) {
+        PmsBaseCatalog3 pmsBaseCatalog3 = new PmsBaseCatalog3();
+        pmsBaseCatalog3.setCatalog2Id(catalog2Id);
+        return pmsBaseCatalog3Mapper.select(pmsBaseCatalog3);
     }
 }

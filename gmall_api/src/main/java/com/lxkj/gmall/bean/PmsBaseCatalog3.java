@@ -8,7 +8,7 @@ public class PmsBaseCatalog3 implements Serializable {
     @Id
     private String id;
     private String name;
-    private String catalog2_Id;
+    private String catalog2Id;
 
     public String getId() {
         return id;
@@ -26,11 +26,11 @@ public class PmsBaseCatalog3 implements Serializable {
         this.name = name;
     }
 
-    public String getCatalog2_Id() {
-        return catalog2_Id;
+    public String getCatalog2Id() {
+        return catalog2Id;
     }
 
-    public void setCatalog2_Id(String catalog2_Id) {
-        this.catalog2_Id = catalog2_Id;
+    public void setCatalog2Id(String catalog2Id) {
+        this.catalog2Id = catalog2Id;
     }
 }
