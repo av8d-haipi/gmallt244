@@ -5,7 +5,6 @@ import com.lxkj.gmall.bean.PmsBaseAttrInfo;
 import com.lxkj.gmall.service.AttrService;
 import org.springframework.web.bind.annotation.*;
 
-
 @RestController
 @CrossOrigin
 public class AttrController {
@@ -33,8 +32,12 @@ public class AttrController {
 
     @RequestMapping(value = "/getAttrValueList")
     public Object getAttrValueList(String attrId){
-       // attrService.getAttrValueList(attrId);
-        return null;
+        return attrService.getAttrValueList(attrId);
+    }
+
+    @RequestMapping(value = "/baseSaleAttrList")
+    public Object baseSaleAttrList(){
+        return attrService.baseSaleAttrList();
     }
 
 }

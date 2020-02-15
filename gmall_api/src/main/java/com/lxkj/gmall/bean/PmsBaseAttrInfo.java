@@ -23,6 +23,7 @@ public class PmsBaseAttrInfo implements Serializable {
     @Transient
     List<PmsBaseAttrValue> attrValueList;
 
+
     public String getId() {
         return id;
     }
