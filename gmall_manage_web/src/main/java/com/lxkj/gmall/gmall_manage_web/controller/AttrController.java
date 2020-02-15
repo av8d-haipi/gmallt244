@@ -1,6 +1,7 @@
 package com.lxkj.gmall.gmall_manage_web.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.lxkj.gmall.bean.PmsBaseAttrInfo;
 import com.lxkj.gmall.service.AttrService;
 import org.springframework.web.bind.annotation.*;
 
