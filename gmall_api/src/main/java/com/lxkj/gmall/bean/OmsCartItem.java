@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class OmsCartItem implements Serializable{
+    //购物车表
 
     @Id
     private String id;
