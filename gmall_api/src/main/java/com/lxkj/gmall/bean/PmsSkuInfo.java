@@ -49,10 +49,11 @@ public class PmsSkuInfo implements Serializable {
     @Transient
     List<PmsSkuSaleAttrValue> skuSaleAttrValueList;
 
+
+
     public String getSpuId() {
         return spuId;
     }
-
     public void setSpuId(String spuId) {
         this.spuId = spuId;
     }

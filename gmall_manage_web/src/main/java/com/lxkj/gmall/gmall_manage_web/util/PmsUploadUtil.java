@@ -13,8 +13,9 @@ import java.io.IOException;
 public class PmsUploadUtil {
 
     public static String uploadImage(MultipartFile multipartFile) throws IOException, MyException {
-        String imgUrl = "http://192.168.79.129/";
+        String imgUrl = "http://192.168.79.129";
         //上传图片到服务器
+
         //获取配置文件的路径
         String tracker = GmallManageWebApplication.class.getResource("/tracker.conf").getPath();
 
@@ -37,7 +38,7 @@ public class PmsUploadUtil {
         String[] uploadInfos = storageClient.upload_file(bytes,"jpg",null);
 
         for (String uploadInfo : uploadInfos) {
-            imgUrl+=uploadInfo;
+            imgUrl+="/"+uploadInfo;
         }
         return imgUrl;
     }

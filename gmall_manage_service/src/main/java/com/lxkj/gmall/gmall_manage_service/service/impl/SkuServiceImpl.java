@@ -29,7 +29,6 @@ public class SkuServiceImpl implements SkuService {
     @Autowired
     private PmsSkuImageMapper pmsSkuImageMapper;
 
-
     @Override
     public void saveSkuInfo(PmsSkuInfo pmsSkuInfo) {
 

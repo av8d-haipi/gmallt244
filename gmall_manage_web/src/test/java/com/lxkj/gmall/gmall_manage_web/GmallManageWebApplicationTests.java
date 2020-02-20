@@ -17,7 +17,7 @@ public class GmallManageWebApplicationTests {
     @Test
    public void contextLoads() throws IOException, MyException {
         //获取配置文件的路径
-       String tracker = GmallManageWebApplication.class.getResource("/tracker.conf").getPath();
+       String tracker = GmallManageWebApplicationTests.class.getResource("/tracker.conf").getPath();
 
         ClientGlobal.init(tracker);
 
@@ -27,11 +27,11 @@ public class GmallManageWebApplicationTests {
 
         StorageClient storageClient = new StorageClient(trackerServer,null);
 
-        String[] uploadInfos = storageClient.upload_file("e:/a.jpg","jpg",null);
+        String[] uploadInfos = storageClient.upload_file("e:/b.jpg","jpg",null);
 
-        String url = "http://192.168.79.129/";
+        String url = "http://192.168.79.129";
         for (String uploadInfo : uploadInfos) {
-           url+=uploadInfo;
+           url+="/"+uploadInfo;
             System.out.println(url);
         }
     }
