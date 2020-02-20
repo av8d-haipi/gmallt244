@@ -27,6 +27,13 @@ public class SpuServiceImpl implements SpuService {
     private PmsProductSaleAttrValueMapper pmsProductSaleAttrValueMapper;
 
 
+    @Override
+    public PmsProductInfo selectid(String spuId) {
+        PmsProductInfo pmsProductInfo = new PmsProductInfo();
+        pmsProductInfo.setId(spuId);
+        PmsProductInfo pmsProductInfo1 = pmsProductInfoMapper.selectOne(pmsProductInfo);
+        return pmsProductInfo1;
+    }
 
     @Override
     public List<PmsProductInfo> spuList(String catalog3Id) {

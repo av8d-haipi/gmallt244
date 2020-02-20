@@ -6,6 +6,12 @@ import com.lxkj.gmall.bean.PmsProductSaleAttr;
 import java.util.List;
 
 public interface SpuService {
+    /**
+     * 指定 商品id 查询
+     * @param spuId
+     * @return
+     */
+    PmsProductInfo selectid(String spuId);
 
     List<PmsProductInfo> spuList(String catalog3Id);
 

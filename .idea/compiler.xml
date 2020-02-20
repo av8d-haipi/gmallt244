@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="demo" />
+        <module name="gmall_api" />
+        <module name="gmall_cart_service" />
+        <module name="gmall_cart_web" />
+        <module name="gmall_common_util" />
+        <module name="gmall_item_service" />
+        <module name="gmall_item_web" />
+        <module name="gmall_manage_service" />
+        <module name="gmall_manage_web" />
+        <module name="gmall_service_util" />
+        <module name="gmall_user_service" />
+        <module name="gmall_user_web" />
+        <module name="gmall_web_util" />
+        <module name="gmallt244" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="demo" target="1.8" />
+      <module name="gmall-cart-service" target="1.8" />
+      <module name="gmall-cart-web" target="1.8" />
+      <module name="gmall_api" target="1.5" />
+      <module name="gmall_cart_service" target="1.8" />
+      <module name="gmall_cart_web" target="1.8" />
+      <module name="gmall_common_util" target="1.8" />
+      <module name="gmall_item_service" target="1.8" />
+      <module name="gmall_item_web" target="1.8" />
+      <module name="gmall_manage_service" target="1.8" />
+      <module name="gmall_manage_web" target="1.8" />
+      <module name="gmall_parent" target="1.8" />
+      <module name="gmall_service_util" target="1.8" />
+      <module name="gmall_user_service" target="1.8" />
+      <module name="gmall_user_web" target="1.8" />
+      <module name="gmall_web_util" target="1.8" />
+      <module name="gmallt244" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ear" name="gmallt244:ear exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/gmallt244_ear_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="gmallt244/javaeeApplication/javaEEApplication" />
+    </root>
+  </artifact>
+</component>
