@@ -73,7 +73,7 @@ public class SpuServiceImpl implements SpuService {
         for (PmsProductSaleAttr productSaleAttr : pmsProductSaleAttrList) {
             PmsProductSaleAttrValue pmsProductSaleAttrValue = new PmsProductSaleAttrValue();
             pmsProductSaleAttrValue.setProductId(spuId);
-            pmsProductSaleAttrValue.setSaleAttrId(pmsProductSaleAttr.getSaleAttrId());
+            pmsProductSaleAttrValue.setSaleAttrId(productSaleAttr.getSaleAttrId());
             List<PmsProductSaleAttrValue> pmsProductSaleAttrValues = pmsProductSaleAttrValueMapper.select(pmsProductSaleAttrValue);
             productSaleAttr.setSpuSaleAttrValueList(pmsProductSaleAttrValues);
         }

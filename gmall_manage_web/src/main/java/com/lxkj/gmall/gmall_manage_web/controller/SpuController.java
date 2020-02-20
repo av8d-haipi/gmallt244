@@ -24,7 +24,7 @@ public class SpuController {
     @RequestMapping(value = "/spuImageList")
     public Object spuImageList(String spuId){
         List<PmsProductImage> pmsProductImages=spuService.spuImageList(spuId);
-        return null;
+        return pmsProductImages;
     }
 
     @RequestMapping(value = "/spuSaleAttrList")

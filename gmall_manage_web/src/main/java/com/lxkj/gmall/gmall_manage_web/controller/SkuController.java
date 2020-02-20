@@ -17,12 +17,9 @@ public class SkuController {
 
     @RequestMapping(value = "/saveSkuInfo")
     public String saveSkuInfo(@RequestBody PmsSkuInfo pmsSkuInfo){
-
         //将spuId封装给productId
         pmsSkuInfo.setProductId(pmsSkuInfo.getSpuId());
-
         skuService.saveSkuInfo(pmsSkuInfo);
-
         return "success";
     }
 }
