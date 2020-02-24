@@ -1022,22 +1022,16 @@
 
         function switchSkuId() {
             var skuSaleAttrValueJsonStr = $("#valuesSku").val();
-            alert(skuSaleAttrValueJsonStr);
             var saleAttrValues = $(".redborder div");
             var k = "";
             $(saleAttrValues).each(function (i,saleAttrValueId) {
 				k = k + $(saleAttrValueId).attr("value")+"|";
             });
-            alert(k);
             var skuSaleAttrValueJson = JSON.parse(skuSaleAttrValueJsonStr);
-            alert(skuSaleAttrValueJson);
             var v_skuId = skuSaleAttrValueJson[k];
-            alert(v_skuId);
 			if(v_skuId){
-                window.location="http://127.0.0.1:8061/"+v_skuId+".html";
+                window.location.href="http://127.0.0.1:8061/"+v_skuId+".html";
 			}
-
         }
 	</script>
-
 </html>

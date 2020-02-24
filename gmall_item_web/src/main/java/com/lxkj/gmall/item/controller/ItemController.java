@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,8 +27,12 @@ public class ItemController {
     private SpuService spuService;
 
     @RequestMapping("/{skuId}.html")
-    public String getSkuInfo(@PathVariable("skuId") String skuId, Map map){
-        PmsSkuInfo skuInfo = skuService.getSkuById(skuId);
+    public String getSkuInfo(@PathVariable("skuId") String skuId, Map map, HttpServletRequest request){
+        String remoteAddr = request.getRemoteAddr();
+
+        //request.getHeader(""); //nginx负载均衡
+
+        PmsSkuInfo skuInfo = skuService.getSkuById(skuId,remoteAddr);
         //sku对象
         map.put("skuInfo",skuInfo);
         //销售属性列表
@@ -38,18 +43,17 @@ public class ItemController {
         Map<String, String> skuSaleAttrHash = new HashMap<>();
         List<PmsSkuInfo> pmsSkuInfos=skuService.getSkuSaleAttrValueListBySpu(skuInfo.getProductId());
         for (PmsSkuInfo pmsSkuInfo : pmsSkuInfos) {
+
             String k = "";
             String v = pmsSkuInfo.getId();
             List<PmsSkuSaleAttrValue> pmsSkuSaleAttrValues = pmsSkuInfo.getSkuSaleAttrValueList();
-            for (PmsSkuSaleAttrValue skuSaleAttrValue : pmsSkuSaleAttrValues) {
-                k+=skuSaleAttrValue.getSaleAttrValueId()+"|";//239,245
+            for (PmsSkuSaleAttrValue pmsSkuSaleAttrValue : pmsSkuSaleAttrValues) {
+                k+=pmsSkuSaleAttrValue.getSaleAttrValueId()+"|";//239,245
             }
             skuSaleAttrHash.put(k,v);
         }
-
         //将sku的销售属性hash表放到页面
         String skuSaleAttrHashJsonStr = JSON.toJSONString(skuSaleAttrHash);
-        System.out.println(skuSaleAttrHashJsonStr);
         map.put("skuSaleAttrHashJsonStr",skuSaleAttrHashJsonStr);
         return "item";
     }
