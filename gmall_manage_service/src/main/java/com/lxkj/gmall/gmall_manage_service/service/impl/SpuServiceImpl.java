@@ -28,6 +28,8 @@ public class SpuServiceImpl implements SpuService {
 
 
 
+
+
     @Override
     public List<PmsProductInfo> spuList(String catalog3Id) {
         PmsProductInfo pmsProductInfo = new PmsProductInfo();

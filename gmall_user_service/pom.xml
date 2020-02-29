@@ -21,21 +21,14 @@
     <dependencies>
         <dependency>
             <groupId>com.lxkj.gmall</groupId>
-            <artifactId>gmall_service_util</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.lxkj.gmall</groupId>
             <artifactId>gmall_api</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-test</artifactId>
-            <version>2.2.4.RELEASE</version>
-            <scope>test</scope>
+            <groupId>com.lxkj.gmall</groupId>
+            <artifactId>gmall_service_util</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

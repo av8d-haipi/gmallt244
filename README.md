@@ -8,3 +8,6 @@
 
 # gmall_item_service 服务8060
 # gmall_item_web 服务8061
+
+#gmall_search_web 服务 8050
+#gmall_search_service 服务8051

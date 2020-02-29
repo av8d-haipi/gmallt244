@@ -2,20 +2,22 @@ package com.lxkj.gmall.gmall_manage_service.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
 import com.alibaba.fastjson.JSON;
-import com.lxkj.gmall.bean.PmsSkuAttrValue;
-import com.lxkj.gmall.bean.PmsSkuImage;
-import com.lxkj.gmall.bean.PmsSkuInfo;
-import com.lxkj.gmall.bean.PmsSkuSaleAttrValue;
+import com.lxkj.gmall.bean.*;
 import com.lxkj.gmall.gmall_manage_service.mapper.PmsSkuAttrValueMapper;
 import com.lxkj.gmall.gmall_manage_service.mapper.PmsSkuImageMapper;
 import com.lxkj.gmall.gmall_manage_service.mapper.PmsSkuInfoMapper;
 import com.lxkj.gmall.gmall_manage_service.mapper.PmsSkuSaleAttrValueMapper;
 import com.lxkj.gmall.service.SkuService;
 import com.lxkj.gmall.util.RedisUtil;
+import io.searchbox.client.JestClient;
+import io.searchbox.core.Index;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import redis.clients.jedis.Jedis;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -36,6 +38,10 @@ public class SkuServiceImpl implements SkuService {
 
     @Autowired
     private RedisUtil redisUtil;
+
+    @Autowired
+    private JestClient jestClient;
+
 
     @Override
     public void saveSkuInfo(PmsSkuInfo pmsSkuInfo) {
@@ -60,7 +66,11 @@ public class SkuServiceImpl implements SkuService {
             pmsSkuImage.setSkuId(skuId);
             pmsSkuImageMapper.insertSelective(pmsSkuImage);
         }
-
+        try {
+            searChUtil();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public PmsSkuInfo getSkuByIdFromDb(String skuId) {
@@ -141,5 +151,40 @@ public class SkuServiceImpl implements SkuService {
     public List<PmsSkuInfo> getSkuSaleAttrValueListBySpu(String productId) {
         List<PmsSkuInfo> pmsSkuInfos = pmsSkuInfoMapper.selectSkuSaleAttrValueListBySpu(productId);
         return pmsSkuInfos;
+    }
+
+    @Override
+    public List<PmsSkuInfo> getAllSku() {
+        List<PmsSkuInfo> pmsSkuInfos = pmsSkuInfoMapper.selectAll();
+        for (PmsSkuInfo pmsSkuInfo : pmsSkuInfos) {
+            String id = pmsSkuInfo.getId();
+            PmsSkuAttrValue pmsSkuAttrValue = new PmsSkuAttrValue();
+            pmsSkuAttrValue.setSkuId(id);
+            List<PmsSkuAttrValue> select = pmsSkuAttrValueMapper.select(pmsSkuAttrValue);
+            pmsSkuInfo.setSkuAttrValueList(select);
+        }
+        return pmsSkuInfos;
+    }
+
+    public void searChUtil() throws IOException {
+        //查询mysql
+        List<PmsSkuInfo> pmsSkuInfoList = new ArrayList<>();
+
+        pmsSkuInfoList = getAllSku();
+        //转化为es的数据结构
+        List<PmsSearchSkuInfo> searchSkuInfos = new ArrayList<>();
+
+        for (PmsSkuInfo pmsSkuInfo : pmsSkuInfoList) {
+            PmsSearchSkuInfo searchSkuInfo = new PmsSearchSkuInfo();
+
+            BeanUtils.copyProperties(pmsSkuInfo,searchSkuInfo);
+
+            searchSkuInfos.add(searchSkuInfo);
+        }
+        //导入es
+        for (PmsSearchSkuInfo searchSkuInfo : searchSkuInfos) {
+            Index put = new Index.Builder(searchSkuInfo).index("gmall0105").type("PmsSkuInfo").id(searchSkuInfo.getId()).build();
+            jestClient.execute(put);
+        }
     }
 }
