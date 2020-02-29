@@ -1,4 +1,4 @@
-package com.lxkj.gmall.gmall_cart_service;
+package com.lxkj.gmall;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
