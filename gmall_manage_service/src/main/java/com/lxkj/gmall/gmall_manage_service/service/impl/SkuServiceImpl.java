@@ -37,6 +37,13 @@ public class SkuServiceImpl implements SkuService {
     private RedisUtil redisUtil;
 
     @Override
+    public PmsSkuInfo skuById(String skuId) {
+        PmsSkuInfo pmsSkuInfo = new PmsSkuInfo();
+        pmsSkuInfo.setId(skuId);
+        return pmsSkuInfoMapper.selectOne(pmsSkuInfo);
+    }
+
+    @Override
     public void saveSkuInfo(PmsSkuInfo pmsSkuInfo) {
 
         pmsSkuInfoMapper.insertSelective(pmsSkuInfo);
