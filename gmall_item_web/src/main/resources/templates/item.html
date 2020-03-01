@@ -92,8 +92,6 @@
 
 			<div class="crumb-wrap">
 			<div class="w">
-	 
- 
 
 			</div>
 		</div>
@@ -190,15 +188,12 @@
 						<div class="box-wrap clear">
 							 
 						</div>
-
 						<div class="box-stock">
 							<ul class="box-ul">
 								<li>库存:</li>
 								<li class="box-stock-li">
 									<div class="box-stock-one">
 									</div>
- 
-
 								</li>
 								<li>
 									<span>无货</span>， 此商品暂时售完
@@ -1022,22 +1017,16 @@
 
         function switchSkuId() {
             var skuSaleAttrValueJsonStr = $("#valuesSku").val();
-            alert(skuSaleAttrValueJsonStr);
             var saleAttrValues = $(".redborder div");
             var k = "";
             $(saleAttrValues).each(function (i,saleAttrValueId) {
 				k = k + $(saleAttrValueId).attr("value")+"|";
             });
-            alert(k);
             var skuSaleAttrValueJson = JSON.parse(skuSaleAttrValueJsonStr);
-            alert(skuSaleAttrValueJson);
             var v_skuId = skuSaleAttrValueJson[k];
-            alert(v_skuId);
 			if(v_skuId){
-                window.location="http://127.0.0.1:8061/"+v_skuId+".html";
+                window.location.href="http://127.0.0.1:8061/"+v_skuId+".html";
 			}
-
         }
 	</script>
-
 </html>

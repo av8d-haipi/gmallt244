@@ -21,7 +21,6 @@ public class CatalogController {
     @RequestMapping("/getCatalog1")
     @ResponseBody
     public Object getCatalog1(){
-        System.out.println("==========111");
         List<PmsBaseCatalog1> catalog1s = catalogService.getCatalog1();
         return catalog1s;
     }
@@ -29,7 +28,6 @@ public class CatalogController {
     @RequestMapping("/getCatalog2")
     @ResponseBody
     public Object getCatalog2(String catalog1Id){
-        System.out.println("==========222");
         List<PmsBaseCatalog2> catalog2s = catalogService.getCatalog2(catalog1Id);
         return catalog2s;
     }
@@ -37,7 +35,6 @@ public class CatalogController {
     @RequestMapping("/getCatalog3")
     @ResponseBody
     public Object getCatalog3(String catalog2Id){
-        System.out.println("==========333");
         List<PmsBaseCatalog3> catalog3s = catalogService.getCatalog3(catalog2Id);
         return catalog3s;
     }
